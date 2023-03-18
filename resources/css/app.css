@@ -1,0 +1,19 @@
+.layout {
+    min-height: 100vh;
+}
+
+.footer {
+    text-align: center;
+    width: 100%;
+}
+
+.if-container {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.if-card {
+    margin-top: 20px;
+}

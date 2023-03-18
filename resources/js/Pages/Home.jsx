@@ -1,6 +1,10 @@
 import React from "react";
-import { Head } from "@inertiajs/inertia-react";
+import Layout from "../Components/Layout";
 
-export default function Test() {
-    return <h1>Welcome</h1>;
+function Home() {
+    return <h1>Videos</h1>;
 }
+
+// Home.layout = page => <Layout children={page} title="Welcome" />
+
+export default Home;
