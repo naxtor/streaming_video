@@ -20,7 +20,7 @@ class VideoController extends Controller
             [
                 "videos" => $videos,
             ],
-            201,
+            200,
         );
     }
 
@@ -50,9 +50,12 @@ class VideoController extends Controller
                 'url' => $path,
             ]);
 
-            return response()->json([
-                'video' => $video,
-            ]);
+            return response()->json(
+                [
+                    'video' => $video,
+                ],
+                201,
+            );
         }
 
         return response()->json(

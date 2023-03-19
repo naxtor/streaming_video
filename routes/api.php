@@ -19,4 +19,4 @@ use App\Http\Controllers\VideoController;
 // We're not using this put/patch method
 // Because it not allowed to upload file
 Route::post('/videos/{id}', [VideoController::class, 'update']);
-Route::resource('videos', VideoController::class)->except(['show', 'edit',]);
+Route::resource('videos', VideoController::class)->except(['create', 'show', 'edit',]);
