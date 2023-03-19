@@ -2,6 +2,13 @@
     min-height: 100vh;
 }
 
+.menu {
+    background-color: #00aff0;
+    color: azure;
+    display: flex;
+    justify-content: center;
+}
+
 .footer {
     text-align: center;
     width: 100%;
@@ -31,9 +38,11 @@
 }
 
 .h-wrapper {
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-top: 20px;
 }
 
 .h-video {
