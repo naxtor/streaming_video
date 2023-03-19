@@ -12,7 +12,7 @@ export default function Layout({ App, props }) {
                 <Menu
                     theme="dark"
                     mode="horizontal"
-                    defaultSelectedKeys={["videos"]}
+                    defaultSelectedKeys={["/"]}
                     items={[
                         {
                             label: <Link href="/">Videos</Link>,

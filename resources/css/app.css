@@ -7,13 +7,40 @@
     width: 100%;
 }
 
-.if-container {
+.u-container {
     width: 100%;
     text-align: center;
     display: flex;
     justify-content: center;
 }
 
-.if-card {
+.u-card {
     margin-top: 20px;
+}
+
+.u-preview {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.u-submit {
+    margin-top: 20px;
+    width: 300px;
+}
+
+.h-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.h-video {
+    max-width: 480px;
+    max-height: 380px;
+}
+
+.main-color {
+    background-color: #00aff0;
 }

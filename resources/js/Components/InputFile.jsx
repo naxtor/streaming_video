@@ -1,14 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import { InboxOutlined } from "@ant-design/icons";
 import { message, Upload } from "antd";
-import { createClient } from "@supabase/supabase-js";
-
-// Create a single supabase client for interacting with your database
-const supabase = createClient(
-    "https://wlboclpxbdewmwwfndrd.supabase.co",
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndsYm9jbHB4YmRld213d2ZuZHJkIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NzQ4MDExOTUsImV4cCI6MTk5MDM3NzE5NX0.vuGq_Wc7qrzwN_9_Qd2GOxYS99qZzYaFGEq9SN9Z2JU"
-);
-const bucketName = "streaming-video";
 
 const { Dragger } = Upload;
 
@@ -18,23 +11,23 @@ const InputFile = (props) => {
             {...{
                 accept: ".mp4",
                 customRequest: async (params) => {
-                    const { data, error } = await supabase.storage
-                        .from(bucketName)
-                        .upload(`public/${params.file.name}.mp4`, params.file, {
-                            cacheControl: "3600",
-                            upsert: true,
-                        });
-                    const path = data.path;
-                    const response = await supabase.storage
-                        .from(bucketName)
-                        .getPublicUrl(path);
+                    const bodyFormData = new FormData();
+                    bodyFormData.append("title", "temp");
+                    bodyFormData.append("video", params.file);
 
-                    if (!error) {
-                        props.setSource(response.data.publicUrl);
-                        params.onSuccess(data);
-                    } else {
-                        params.onError(error);
-                    }
+                    const { data } = await axios.post(
+                        "/api/videos",
+                        bodyFormData,
+                        {
+                            headers: {
+                                accept: "application/json",
+                                "Content-Type": "multipart/form-data",
+                            },
+                        }
+                    );
+                    params.onSuccess(data.video.url);
+                    props.setSource(data.video.url);
+                    props.setFile(params.file);
                 },
                 onChange(info) {
                     const { status } = info.file;
