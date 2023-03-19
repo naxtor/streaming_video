@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { Button, Card, Input, Space } from "antd";
+import { Button, Card, Input, message, Space } from "antd";
 import InputFile from "../Components/InputFile";
 
 function Upload() {
@@ -25,6 +25,10 @@ function Upload() {
 
         if (data) {
             setState("success");
+            message.success("Video has successfully uploaded!");
+            setTitle("");
+            setSource("");
+            setFile({});
         }
     }
 
@@ -37,6 +41,7 @@ function Upload() {
             >
                 <Space direction="vertical">
                     <Input
+                        value={title}
                         placeholder="Input file name..."
                         onChange={(e) => setTitle(e.target.value)}
                     />

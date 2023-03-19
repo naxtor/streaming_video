@@ -7,9 +7,9 @@ const { Header, Footer } = Wrapper;
 export default function Layout({ App, props }) {
     return (
         <Wrapper className="layout">
-            <Header>
-                <div className="logo" />
+            <Header style={{backgroundColor: '#00AFF0'}}>
                 <Menu
+                    className="menu"
                     theme="dark"
                     mode="horizontal"
                     defaultSelectedKeys={["/"]}
